@@ -14,6 +14,9 @@ export const Layout = ({children, title = 'Next app'}) => {
         <li>
           <Link href={'/about'}><a>About</a></Link>
         </li>
+        <li>
+          <Link href={'/posts'}><a>Posts</a></Link>
+        </li>
       </ul>
       <main className='container'>
         {children}
