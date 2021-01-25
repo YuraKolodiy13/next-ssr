@@ -10,7 +10,7 @@ const Posts = ({posts: serverPosts}) => {
 
   useEffect(() => {
     async function load() {
-      const response = await fetch('https://fir-89ca2.firebaseio.com/posts.json');
+      const response = await fetch(`${process.env.API_URL}/posts.json`);
       const json = await response.json();
       setPosts(Object.entries(json).reverse());
     }
@@ -41,7 +41,7 @@ const Posts = ({posts: serverPosts}) => {
 
 Posts.getInitialProps = async (ctx) => {
   if(!ctx.req) return {posts: null};
-  const res = await fetch('https://fir-89ca2.firebaseio.com/posts.json');
+  const res = await fetch(`${process.env.API_URL}/posts.json`);
   const json = await res.json();
   return {posts: json}
 };

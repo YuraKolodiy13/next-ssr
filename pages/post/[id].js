@@ -9,7 +9,7 @@ const Post = ({post: serverPost}) => {
 
   useEffect(() => {
     async function load() {
-      const response = await fetch(`https://fir-89ca2.firebaseio.com/posts/${router.query.id}.json`);
+      const response = await fetch(`${process.env.API_URL}/posts/${router.query.id}.json`);
       const json = await response.json();
       setPost(json);
     }
@@ -50,7 +50,7 @@ const Post = ({post: serverPost}) => {
 
 Post.getInitialProps = async (ctx) => {
   if(!ctx.req) return {post: null};
-  const res = await fetch(`https://fir-89ca2.firebaseio.com/posts/${ctx.query.id}.json`);
+  const res = await fetch(`${process.env.API_URL}/posts/${ctx.query.id}.json`);
   return {post: await res.json()};
 };
 
@@ -58,7 +58,7 @@ Post.getInitialProps = async (ctx) => {
 //   // if (!req) {
 //   //   return {post: null}
 //   // }
-//   const response = await fetch(`https://fir-89ca2.firebaseio.com/posts/${query.id}.json`)
+//   const response = await fetch(`${process.env.API_URL}/posts/${query.id}.json`)
 //   const post = await response.json()
 //
 //   return {props: {post}}
